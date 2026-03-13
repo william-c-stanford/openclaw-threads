@@ -1,6 +1,7 @@
 {
   "id": "threads",
   "name": "Threads",
+  "skills": ["skills/threads"],
   "description": "Slate thread/episode architecture for long-horizon agentic tasks. Implements thread weaving: bounded worker episodes synchronized back into one orchestration thread, solving context rot without losing information at subagent boundaries.",
   "configSchema": {
     "type": "object",
