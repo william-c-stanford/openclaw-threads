@@ -6,3 +6,4 @@ dist/
 # Sibling project folders — not part of this extension repo
 openclaw/
 threads-v2/
+.DS_Store
