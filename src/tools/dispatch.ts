@@ -4,7 +4,7 @@
  * threads_dispatch — dispatch a bounded action to a named thread.
  *
  * This is the core primitive of the Slate architecture. The orchestrator
- * (Claude) calls this to delegate work to a focused worker thread. The thread
+ * The orchestrator calls this to delegate work to a focused worker thread. The thread
  * executes step-by-step, accumulates context across dispatches, and returns a
  * structured Episode rather than a plain string.
  *

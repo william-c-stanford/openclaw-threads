@@ -126,10 +126,16 @@ export async function dispatchToThread(params: {
   const primaryModel =
     typeof primary === "string" ? primary.split("/").slice(1).join("/") : undefined;
 
-  const provider =
-    pluginCfg.defaultProvider?.trim() || primaryProvider || "anthropic";
-  const model =
-    pluginCfg.defaultModel?.trim() || primaryModel || "claude-sonnet-4-6";
+  const provider = pluginCfg.defaultProvider?.trim() || primaryProvider;
+  const model = pluginCfg.defaultModel?.trim() || primaryModel;
+
+  if (!provider || !model) {
+    throw new Error(
+      "threads: could not resolve provider/model for thread worker. " +
+        "Set agents.defaults.model in openclaw.json (e.g. \"anthropic/claude-sonnet-4-6\" or \"openai-codex/gpt-5.2\") " +
+        "or configure threads.config.defaultProvider + threads.config.defaultModel."
+    );
+  }
 
   const maxSteps = pluginCfg.maxStepsPerEpisode ?? 30;
 

@@ -23,7 +23,7 @@ An Episode carries:
 - `keyFindings` — structured JSON the orchestrator can inspect and route
 - `composableSummary` — compact string that can be injected into any subsequent thread's context (**thread weaving**)
 
-The orchestrator (Claude) has explicit control over what context flows where. Nothing is silently discarded at subagent boundaries.
+The orchestrator has explicit control over what context flows where. Nothing is silently discarded at subagent boundaries.
 
 ```
 Subagents:  orchestrator → string prompt → subagent → string response → orchestrator
@@ -144,17 +144,21 @@ threads_status(include_latest_summaries?: boolean)
 }
 ```
 
+`defaultProvider` and `defaultModel` are optional — thread workers inherit whatever model is configured in `agents.defaults.model`. Override here only if you want workers to use a different model than your main agent (e.g. a faster/cheaper model for exploratory threads).
+
+Works with any OpenClaw-supported provider: `anthropic`, `openai-codex`, `google`, `ollama`, etc.
+
 | Key | Default | Description |
 |---|---|---|
 | `maxStepsPerEpisode` | `30` | Max tool calls a thread worker may make per dispatch |
-| `defaultProvider` | agent default | Provider for thread workers |
+| `defaultProvider` | agent default | Provider for thread workers (any OpenClaw-supported provider) |
 | `defaultModel` | agent default | Model for thread workers |
 | `sessionTtlMs` | `3600000` (1h) | How long to keep thread state in memory |
 
 ## Example usage
 
 ```
-# Orchestrator prompt to Claude:
+# Example orchestrator prompt:
 
 Explore the codebase and write a migration plan using threads.
 
