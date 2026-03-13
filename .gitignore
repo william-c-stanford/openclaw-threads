@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.env
+*.log
+
+# Sibling project folders — not part of this extension repo
+openclaw/
+threads-v2/

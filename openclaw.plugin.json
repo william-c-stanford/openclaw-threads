@@ -1,0 +1,27 @@
+{
+  "id": "threads",
+  "name": "Threads",
+  "description": "Slate thread/episode architecture for long-horizon agentic tasks. Implements thread weaving: bounded worker episodes synchronized back into one orchestration thread, solving context rot without losing information at subagent boundaries.",
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "maxStepsPerEpisode": {
+        "type": "number",
+        "description": "Maximum tool-call steps a thread worker may take per dispatch (default: 30)"
+      },
+      "defaultProvider": {
+        "type": "string",
+        "description": "Provider for thread worker runs (falls back to agent default)"
+      },
+      "defaultModel": {
+        "type": "string",
+        "description": "Model for thread worker runs (falls back to agent default)"
+      },
+      "sessionTtlMs": {
+        "type": "number",
+        "description": "How long (ms) to keep thread session state in memory (default: 3600000 = 1h)"
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "name": "@william-c-stanford/openclaw-threads",
+  "version": "0.1.0",
+  "description": "Slate thread/episode architecture for OpenClaw — thread weaving, episodic memory, and long-horizon task execution without context rot",
+  "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/william-c-stanford/openclaw-threads"
+  },
+  "openclaw": {
+    "extensions": [
+      "./index.ts"
+    ]
+  },
+  "peerDependencies": {
+    "openclaw": ">=2026.3.0"
+  },
+  "peerDependenciesMeta": {
+    "openclaw": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@sinclair/typebox": "0.34.48",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  }
+}
